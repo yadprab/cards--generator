@@ -1,0 +1,45 @@
+html {
+
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+
+    overflow-x: hidden;
+
+}
+
+html,
+body,
+#root {
+    height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+
+
+}
+
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+}
+
+svg{
+
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+}

@@ -1,0 +1,29 @@
+header{
+    padding: 120px 48px;
+    background-image: url(../bg/square.png);
+    background-size: contain;
+}
+
+.hero--section{
+    display: grid;
+    grid-template-columns: 1fr; 
+    text-align: center;
+   figure{
+       margin-top: 1.5em;
+   }
+    h2{
+         color: var(--dark);
+    }
+    h3{
+        font-weight: 400;
+         color: var(--dark2);
+         margin-top: 0;
+    }
+
+    a{
+        background-color: var(--base);
+        color: var(--grey3);
+        font-weight: 500;
+    }
+   
+}

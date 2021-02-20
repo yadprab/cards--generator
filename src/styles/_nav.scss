@@ -1,0 +1,14 @@
+nav{
+    background-color: var(--dark);
+    padding: 1em;
+    @include flex-1;
+    justify-content: space-between;
+    @include box-shadow-4;
+
+   img{
+       height: 50px;
+   }
+    svg{
+        fill: var(--grey1);
+    }
+}

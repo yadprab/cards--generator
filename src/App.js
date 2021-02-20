@@ -1,17 +1,14 @@
-import "./style.css";
-import { Container } from "./components/Container";
-import { Route, Switch} from "react-router-dom";
-import{Container2} from './components/Container2'
-import { Forms } from "./components/Forms";
+import "./styles/style.css";
+
+import { Route, Switch } from "react-router-dom";
+import { LandingPage } from "./components/Pages/LandingPage";
+import { Generator } from "./components/Pages/Generator";
 function App() {
-  
-  
   return (
     <>
       <Switch>
-        <Route exact path="/" component={Container} />
-        <Route exact path="/form" component={Forms} />
-        <Route exact path="/generator" component={Container2} />
+        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/generator" component={Generator} />
       </Switch>
     </>
   );
