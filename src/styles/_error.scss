@@ -1,0 +1,15 @@
+.error--section{
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 1em;
+    place-items: center;
+
+    h3{
+        max-width: 20ch;
+        text-align: center;
+        color: var(--dark3);
+    }
+    figure{
+        width: 500px;
+    }
+}

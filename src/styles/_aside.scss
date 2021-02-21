@@ -11,6 +11,10 @@ input {
     border: none;
     font-weight: 400;
     font-size: 0.8rem;
+ &:focus{
+      box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+ }
+
 
 
 }
@@ -97,18 +101,20 @@ textarea {
     opacity: 0;
     background-color: var(--grey2);
     width: 100%;
-    
+
     white-space: pre-wrap;
-  
+
     display: block;
 }
-pre{
+
+pre {
     height: 400px;
-    
+
     font-size: 0.8rem;
     margin: 1em 0;
+    
 
-    code{
+    code {
         height: 100%;
         display: block;
         white-space: pre-wrap;
@@ -116,6 +122,8 @@ pre{
         color: #fff;
         overflow: auto;
     }
+
+
 }
 
 .card--section,
@@ -133,7 +141,7 @@ pre{
     h3 {
         font-size: 1.25rem;
         margin-top: 0;
-        
+
     }
 
     img {
@@ -159,7 +167,7 @@ pre{
     padding: 1em;
 }
 
-.code--section{
+.code--section {
     position: fixed;
     top: 0;
     left: 0;
@@ -167,15 +175,69 @@ pre{
     bottom: 0;
     background-color: rgba($color: #000000, $alpha: 0.5);
     @include flex-1;
+    z-index: 14000;
 }
-.ta--section{
+
+.ta--section {
     background-color: var(--grey3);
     padding: 1em;
     min-height: 600px;
-   width: 480px;
-   h3{
+    width: 480px;
+    position: relative;
+    overflow: hidden;
+   
+
+
+    h3 {
         color: var(--dark2);
         font-size: 1.3rem;
         max-width: 40ch;
-   }
+    }
+
+    #close--button {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        @include button;
+        background-color: unset;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #ec1e33;
+        @include flex-2;
+        overflow: hidden;
+         
+
+    }
 }
+.notification{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 5px;
+    align-items: center;
+    background-color: #fff;
+    padding: 1em;
+    max-width: 260px;
+    place-content: center;
+    border-left:5px solid #25ae88;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+   
+    transition: transform 0.4s ease-in;
+
+   
+    
+  
+  
+    @include box-special;
+    p{
+        margin: 0;
+    }
+}
+.notify{
+    transform: translateX(0);
+}
+.hide{
+     transform: translateX(-300px);
+}
+

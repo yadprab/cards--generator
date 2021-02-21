@@ -3,8 +3,10 @@ import { Nav } from "./Nav";
 import { Aside } from "./generatorPage/Aside";
 import { Main } from "./generatorPage/Main";
 import {dataContext} from './generatorPage/conetext'
+import {ErrorComp} from './generatorPage/Error'
 function Generator() {
   const [Image, setImage] = useState({});
+const [Error, setError] = useState(false)
   const [Loading, setLoading] = useState(true)
   const [StyleObject, setStyleObject] = useState({
     cardWidth:300,
@@ -23,9 +25,15 @@ function Generator() {
       .then((data) => {
         setImage(data);
         setLoading(false)
+       
+       
 
       })
-      .catch((err) => console.log(err));
+      .catch((err) =>{
+       setLoading(false);
+       setError(true);
+        setImage({});
+      });
   };
 
   useEffect(() => {
@@ -35,15 +43,20 @@ function Generator() {
 
   return (
     <>
-      <main>
-        <Nav />
-        <dataContext.Provider
-          value={{ Image, Loading, StyleObject, setStyleObject }}
-        >
-          <Main />
-          <Aside />
-        </dataContext.Provider>
-      </main>
+      {Error ? (
+        <ErrorComp/>
+      ) : (
+        <main>
+          <Nav />
+
+          <dataContext.Provider
+            value={{ Image, Loading, StyleObject, setStyleObject }}
+          >
+            <Main />
+            <Aside />
+          </dataContext.Provider>
+        </main>
+      )}
     </>
   );
 }

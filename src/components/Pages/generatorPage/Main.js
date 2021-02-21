@@ -78,7 +78,13 @@ function Main() {
         <section className="card--section" style={STYLE.grid} ref={ref}>
           <article className="card" style={STYLE.box}>
             <img
-              src={Image.urls.small}
+              src={
+                Image.urls.small ||
+                Image.urls.thumb ||
+                Image.urls.regular ||
+                Image.urls.full ||
+                Image.urls.raw
+              }
               alt={Image.alt_description}
               style={STYLE.image}
             />

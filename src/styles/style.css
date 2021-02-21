@@ -565,6 +565,19 @@ small,
   cursor: pointer;
 }
 
+.button:active {
+  -webkit-transform: scale(0.98);
+          transform: scale(0.98);
+  /* Scaling button to 0.98 to its original size */
+  -webkit-box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+          box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+  /* Lowering the shadow */
+}
+
+.button:hover {
+  background-color: var(--base);
+}
+
 html {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
@@ -600,7 +613,7 @@ a {
   text-decoration: none;
 }
 
-svg {
+svg:not(#svg2) {
   width: 24px;
   height: 24px;
   pointer-events: none;
@@ -644,11 +657,12 @@ header {
   display: grid;
   -ms-grid-columns: 1fr;
       grid-template-columns: 1fr;
-  text-align: center;
+  place-content: center;
 }
 
-.hero--section figure {
+.hero--section video {
   margin-top: 1.5em;
+  place-self: center;
 }
 
 .hero--section h2 {
@@ -661,10 +675,28 @@ header {
   margin-top: 0;
 }
 
+.hero--section article {
+  place-self: center;
+}
+
 .hero--section a {
   background-color: var(--base);
   color: var(--grey3);
   font-weight: 500;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 220px;
+}
+
+.hero--section a svg {
+  margin-left: 0.5em;
 }
 
 main {
@@ -722,6 +754,11 @@ input {
   border: none;
   font-weight: 400;
   font-size: 0.8rem;
+}
+
+input:focus {
+  -webkit-box-shadow: 0 0 5px #51cbee;
+          box-shadow: 0 0 5px #51cbee;
 }
 
 .column--width,
@@ -905,6 +942,7 @@ pre code {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  z-index: 14000;
 }
 
 .ta--section {
@@ -912,11 +950,107 @@ pre code {
   padding: 1em;
   min-height: 600px;
   width: 480px;
+  position: relative;
+  overflow: hidden;
 }
 
 .ta--section h3 {
   color: var(--dark2);
   font-size: 1.3rem;
   max-width: 40ch;
+}
+
+.ta--section #close--button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: inline-block;
+  line-height: 1.5;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.375em 0.75em;
+  font-size: 0.89rem;
+  text-transform: capitalize;
+  border-radius: 2px;
+  letter-spacing: 1px;
+  background-color: unset;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ec1e33;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow: hidden;
+}
+
+.notification {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr;
+      grid-template-columns: auto 1fr;
+  gap: 5px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fff;
+  padding: 1em;
+  max-width: 260px;
+  place-content: center;
+  border-left: 5px solid #25ae88;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  -webkit-transition: -webkit-transform 0.4s ease-in;
+  transition: -webkit-transform 0.4s ease-in;
+  transition: transform 0.4s ease-in;
+  transition: transform 0.4s ease-in, -webkit-transform 0.4s ease-in;
+  -webkit-box-shadow: 0px 26px 36px -20px rgba(0, 0, 0, 0.4);
+          box-shadow: 0px 26px 36px -20px rgba(0, 0, 0, 0.4);
+}
+
+.notification p {
+  margin: 0;
+}
+
+.notify {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+.hide {
+  -webkit-transform: translateX(-300px);
+          transform: translateX(-300px);
+}
+
+.error--section {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  padding: 1em;
+  place-items: center;
+}
+
+.error--section h3 {
+  max-width: 20ch;
+  text-align: center;
+  color: var(--dark3);
+}
+
+.error--section figure {
+  width: 500px;
 }
 /*# sourceMappingURL=style.css.map */

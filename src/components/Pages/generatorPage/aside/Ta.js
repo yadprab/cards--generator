@@ -1,8 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { dataContext } from "../conetext";
+import  {Check} from './Check'
 function Ta() {
   const { StyleObject, setStyleObject } = useContext(dataContext);
 
+const ref = useRef(null);
+
+const [Notifications, setNotifications] = useState(false)
+
+const copyToClipBoard = () => {
+
+  ref.current.select();
+ 
+  document.execCommand('copy');
+  setNotifications(true);
+
+  
+}
 
 
   return (
@@ -14,6 +28,7 @@ function Ta() {
           id="html--area"
           readOnly
           value={StyleObject.html}
+          ref={ref}
         ></textarea>
         <pre>
           <code>
@@ -23,15 +38,23 @@ function Ta() {
           
           `}
           </code>
+          <button
+            id="close--button"
+            onClick={() => {
+              setStyleObject({ ...StyleObject, code: false });
+            }}
+          >
+            Close
+          </button>
         </pre>
-        <button
-          className="button"
-          onClick={() => {
-            setStyleObject({ ...StyleObject, code: false });
-          }}
-        >
-          Copy code
+        <button className="button" onClick={copyToClipBoard}>
+        {Notifications?'copied':'copy'}
+         
         </button>
+        <article className={`notification ${Notifications?'notify':'hide'}`}>
+          <Check />
+          <p>successfully copied</p>
+        </article>
       </article>
     </>
   );

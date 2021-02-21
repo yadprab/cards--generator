@@ -1,14 +1,21 @@
 import React from "react";
 import { Svg } from "./Svg";
+import { Link} from "react-router-dom";
 function Nav() {
   return (
     <>
       <nav>
         <article>
-          <img src="/images/logo.png" alt=""/>
+          <Link to="/">
+            <img src="/images/logo.png" alt="" />
+          </Link>
         </article>
 
-        <a href="#" target="_blank" rel="noOpener noReferrer">
+        <a
+          href="https://github.com/yadprab/cards--generator"
+          target="_blank"
+          rel="noOpener noReferrer"
+        >
           <Svg />
         </a>
       </nav>
