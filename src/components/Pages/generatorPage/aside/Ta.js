@@ -11,12 +11,16 @@ const [Notifications, setNotifications] = useState(false)
 const copyToClipBoard = () => {
 
   ref.current.select();
- 
+
   document.execCommand('copy');
+  navigator.clipboard.writeText(ref.current.value);
   setNotifications(true);
+ 
 
   
 }
+const comment = `<!--this is the main container increase the number of cards by multiplying article .card element and 
+increase grid-template column count and remove contenteditable and unnecessary canvas tags -->`;
 
 
   return (
@@ -27,16 +31,18 @@ const copyToClipBoard = () => {
           name="html--area"
           id="html--area"
           readOnly
-          value={StyleObject.html}
+          value={`${comment}${StyleObject.html}`}
           ref={ref}
         ></textarea>
         <pre>
-          <code>
-            {`
-             /* this is the main container increase the number of cards by multiplying article--card element and increase grid-template column count */
+          <code className={` ${Notifications ? "highlight" : ""}`}>
+            <p>
+              {`
+              <!-- /* this is the main container increase the number of cards by multiplying article--card element and increase grid-template column count */ -->
              ${StyleObject.html}
           
           `}
+            </p>
           </code>
           <button
             id="close--button"
@@ -48,10 +54,11 @@ const copyToClipBoard = () => {
           </button>
         </pre>
         <button className="button" onClick={copyToClipBoard}>
-        {Notifications?'copied':'copy'}
-         
+          {Notifications ? "copied" : "copy"}
         </button>
-        <article className={`notification ${Notifications?'notify':'hide'}`}>
+        <article
+          className={`notification ${Notifications ? "notify" : "hide"}`}
+        >
           <Check />
           <p>successfully copied</p>
         </article>

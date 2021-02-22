@@ -872,15 +872,22 @@ pre {
   height: 400px;
   font-size: 0.8rem;
   margin: 1em 0;
+  white-space: pre-wrap;
 }
 
-pre code {
+code {
   height: 100%;
   display: block;
   white-space: pre-wrap;
   background-color: var(--dark3);
   color: #fff;
   overflow: auto;
+}
+
+code grid-a
+p {
+  white-space: pre-wrap;
+  display: inline;
 }
 
 .card--section,
@@ -1033,6 +1040,11 @@ pre code {
 .hide {
   -webkit-transform: translateX(-300px);
           transform: translateX(-300px);
+}
+
+.highlight p {
+  display: inline;
+  background-color: var(--shade);
 }
 
 .error--section {

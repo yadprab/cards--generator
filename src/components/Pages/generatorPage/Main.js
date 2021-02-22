@@ -17,39 +17,35 @@ function Main() {
   const STYLE = {
     grid: {
       display: " grid",
-      gridTemplateColumns: `repeat(1, ${
-        StyleObject.columnWidth === undefined ? 300 : StyleObject.columnWidth
-      }px)`,
+      gridTemplateColumns: `repeat(1, ${StyleObject.cardWidth}px)`,
       placeContent: "center",
     },
     box: {
-       backgroundColor: '#fff',
+      backgroundColor: "#fff",
       boxShadow: `${StyleObject.x}px ${StyleObject.y}px ${StyleObject.blur}px ${StyleObject.spread}px  rgba(0, 0, 0, 0.4)`,
     },
-  h3:{
-  fontSize:' 1.25rem',
-  marginTop:0,
-
-  },
+    h3: {
+      fontSize: " 1.25rem",
+      marginTop: 0,
+    },
     image: {
-   width: '100%',
-   objectFit:'cover',
+      width: "100%",
+      objectFit: "cover",
       height: `${
         StyleObject.imageHeight === undefined ? 200 : StyleObject.imageHeight
       }px`,
     },
 
-    article:{
-      padding: '1em',
-  borderBottomLeftRadius: '4px',
-  borderBottomRightRadius:' 4px',
- maxWidth: '45ch',
+    article: {
+      padding: "1em",
+      borderBottomLeftRadius: "4px",
+      borderBottomRightRadius: " 4px",
+      maxWidth: "45ch",
     },
 
-    p:{
-      fontSize:'1rem',
-      
-    }
+    p: {
+      fontSize: "1rem",
+    },
   };
   const handleChange = (e) => {
     if (e.target.id==='text') {
@@ -76,6 +72,7 @@ function Main() {
         <CardSkeleton />
       ) : (
         <section className="card--section" style={STYLE.grid} ref={ref}>
+        
           <article className="card" style={STYLE.box}>
             <img
               src={

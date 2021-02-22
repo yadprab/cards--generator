@@ -112,19 +112,29 @@ pre {
 
     font-size: 0.8rem;
     margin: 1em 0;
+    white-space: pre-wrap;
     
 
-    code {
-        height: 100%;
-        display: block;
-        white-space: pre-wrap;
-        background-color: var(--dark3);
-        color: #fff;
-        overflow: auto;
-    }
+   
 
 
 }
+ code {
+     height: 100%;
+     display: block;
+    white-space: pre-wrap;
+     background-color: var(--dark3);
+     color: #fff;
+     overflow: auto;
+   
+     
+     p{
+         white-space: pre-wrap;
+         display:inline;
+     }
+
+
+ }
 
 .card--section,
 .card--section--skeleton {
@@ -241,3 +251,10 @@ pre {
      transform: translateX(-300px);
 }
 
+.highlight{
+    p{
+        display: inline;
+     
+        background-color: var(--shade);
+    }
+}

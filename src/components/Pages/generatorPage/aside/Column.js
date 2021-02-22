@@ -3,14 +3,25 @@ import { dataContext } from "../conetext";
 function Column() {
   const { StyleObject, setStyleObject } = useContext(dataContext);
   const [Input, setInput] = useState({
-    cardWidth: StyleObject.columnWidth,
+    cardWidth: StyleObject.cardWidth,
     imageHeight: StyleObject.imageHeight,
+  
   });
 
   const handleChange = (e) => {
     const re = new RegExp("^\\d+$");
     const name = e.target.name;
     const val = parseInt(e.target.value);
+
+    if (e.target.value==='') {
+      setInput({
+        cardWidth: 300,
+    imageHeight:200,
+     
+      });
+       setStyleObject({ ...StyleObject, cardWidth: 300, imageHeight: 200 });
+     
+    }
 
     if (!re.test(val)) {
       return;
@@ -19,7 +30,7 @@ function Column() {
         ...Input,
         [name]: val,
       });
-
+console.log(Input);
       setStyleObject({ ...StyleObject, [name]: val });
     }
   };
@@ -30,12 +41,12 @@ function Column() {
         <input
           type="text"
           id="column"
-          name="columnWidth"
+          name="cardWidth"
           defaultValue={Input.cardWidth}
           onChange={handleChange}
         />
 
-        <label htmlFor="height">imageHeight</label>
+        <label htmlFor="height">ImageHeight</label>
         <input
           type="text"
           id="imageHeight"

@@ -11,12 +11,22 @@ function Box() {
   });
 
   const handleChange = (e) => {
+
+
+    
     const name = e.target.name;
 
     let val = e.target.value;
 
+    
+
     if (name === "blur") {
-      val = Math.abs(val);
+     
+      if (isNaN(val)) {
+        return
+      }else{
+         val = Math.abs(val);
+      }
     }
 
     setBoxSdw({

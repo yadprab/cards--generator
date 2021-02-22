@@ -6,7 +6,7 @@ import {dataContext} from './generatorPage/conetext'
 import {ErrorComp} from './generatorPage/Error'
 function Generator() {
   const [Image, setImage] = useState({});
-const [Error, setError] = useState(false)
+  const [Error, setError] = useState(false)
   const [Loading, setLoading] = useState(true)
   const [StyleObject, setStyleObject] = useState({
     cardWidth:300,
