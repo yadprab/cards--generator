@@ -1,6 +1,6 @@
 import React from 'react'
 import {Nav} from '../Nav'
-
+//error component
 function ErrorComp() {
     return (
       <>

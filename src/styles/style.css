@@ -547,7 +547,8 @@ h5 {
 }
 
 small,
-.text_small {
+.text_small,
+figcaption {
   font-size: 0.8rem;
 }
 
@@ -582,12 +583,6 @@ html {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   overflow-x: hidden;
-}
-
-html,
-body,
-#root {
-  height: 100%;
 }
 
 * {
@@ -648,38 +643,46 @@ nav svg {
 
 header {
   padding: 120px 48px;
-  background-image: url(../bg/square.png);
-  background-size: contain;
+}
+
+.mobile--version {
+  display: none;
 }
 
 .hero--section {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
-  place-content: center;
+  -ms-grid-columns: 1fr auto;
+      grid-template-columns: 1fr auto;
 }
 
-.hero--section video {
+.hero--section video,
+.hero--section-2 video,
+.hero--section-3 video,
+.hero--section-4 video {
   margin-top: 1.5em;
-  place-self: center;
 }
 
-.hero--section h2 {
+.hero--section h2,
+.hero--section-2 h2,
+.hero--section-3 h2,
+.hero--section-4 h2 {
   color: var(--dark);
 }
 
-.hero--section h3 {
+.hero--section h3,
+.hero--section-2 h3,
+.hero--section-3 h3,
+.hero--section-4 h3 {
   font-weight: 400;
   color: var(--dark2);
   margin-top: 0;
 }
 
-.hero--section article {
-  place-self: center;
-}
-
-.hero--section a {
+.hero--section a,
+.hero--section-2 a,
+.hero--section-3 a,
+.hero--section-4 a {
   background-color: var(--base);
   color: var(--grey3);
   font-weight: 500;
@@ -695,8 +698,74 @@ header {
   max-width: 220px;
 }
 
-.hero--section a svg {
+.hero--section a svg,
+.hero--section-2 a svg,
+.hero--section-3 a svg,
+.hero--section-4 a svg {
   margin-left: 0.5em;
+  width: 19px;
+  height: 19px;
+}
+
+.hero--section-2,
+.hero--section-3,
+.hero--section-4 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 3em 0;
+}
+
+.hero--section-2 a,
+.hero--section-3 a,
+.hero--section-4 a {
+  display: none;
+}
+
+.hero--section-2 article,
+.hero--section-3 article,
+.hero--section-4 article {
+  text-align: center;
+}
+
+.hero--section-4 a {
+  display: inline-block;
+}
+
+@media screen and (max-width: 500px) {
+  header {
+    display: none;
+  }
+  .mobile--version {
+    display: block;
+    width: 100%;
+    height: 100vh;
+    background-image: url(../bg/cool-background.png);
+    padding: 1.5em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 main {
@@ -706,8 +775,7 @@ main {
       grid-template-columns: 1fr 400px;
   -ms-grid-rows: 65px 1fr;
       grid-template-rows: 65px 1fr;
-  background-image: url(../bg/square.png);
-  height: 100%;
+  background-color: #E6E6E6;
 }
 
 aside {
@@ -718,7 +786,7 @@ aside {
   grid-row: 1/3;
   background-color: var(--dark3);
   padding: 0 3em;
-  height: 100%;
+  height: 900px;
   -webkit-box-shadow: 0 5px 10px -5px rgba(0, 0, 0, var(--alpha-4));
           box-shadow: 0 5px 10px -5px rgba(0, 0, 0, var(--alpha-4));
 }
@@ -739,6 +807,57 @@ aside .button {
   min-width: 220px;
   color: var(--grey3);
   font-weight: 500;
+}
+
+.types--section {
+  padding: 1.5em;
+}
+
+.types--section .types {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (250px)[3];
+      grid-template-columns: repeat(3, 250px);
+  place-content: center;
+  place-items: center;
+  gap: 100px;
+  padding: 1.5em;
+}
+
+.types--section .types article {
+  padding: 1em;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  -webkit-transition: background 0.4s ease-in;
+  transition: background 0.4s ease-in;
+}
+
+.types--section .types article:hover {
+  background-color: #fafafa;
+}
+
+.types--section .types figure {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.types--section .types figure figcaption {
+  text-align: center;
+  margin: 1em 0;
+  color: var(--dark2);
+  text-transform: capitalize;
+  letter-spacing: 0.04em;
 }
 
 label {
@@ -1046,6 +1165,65 @@ code p {
 .highlight p {
   display: inline;
   background-color: var(--shade);
+}
+
+.profile--card--section {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (300px)[1];
+      grid-template-columns: repeat(1, 300px);
+  place-content: center;
+  grid-auto-rows: 300px;
+}
+
+.profile--card {
+  background-color: #fff;
+  border-radius: 4px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-shadow: 0px 26px 36px -20px rgba(0, 0, 0, 0.4);
+          box-shadow: 0px 26px 36px -20px rgba(0, 0, 0, 0.4);
+}
+
+.profile--card h3 {
+  font-size: 1.25rem;
+  margin: 1em 0 0 0;
+  color: var(--dark);
+}
+
+.profile--card p {
+  color: var(--dark2);
+}
+
+.profile--card figure {
+  width: 80px;
+  height: 80px;
+}
+
+.profile--card figure img {
+  height: inherit;
+  width: inherit;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#profile--button {
+  background: linear-gradient(283.34deg, #966BE5 0.2%, #5CA2FF 40.42%);
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: #fff;
 }
 
 .error--section {

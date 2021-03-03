@@ -1,26 +1,31 @@
 import React, { useContext, useState } from "react";
 import { dataContext } from "../conetext";
-function Column() {
+    // input component to controlling values
+function Column({ id }) {
   const { StyleObject, setStyleObject } = useContext(dataContext);
+  // setting same values to the controlling inputs using useState
   const [Input, setInput] = useState({
     cardWidth: StyleObject.cardWidth,
     imageHeight: StyleObject.imageHeight,
-  
+    cardHeight: StyleObject.cardHeight,
+    figureW: StyleObject.figureW,
+    figureH: StyleObject.figureH,
+    positionT: StyleObject.positionT,
+    positionB: StyleObject.positionB,
   });
 
+  // using dynamic objects we changing state
   const handleChange = (e) => {
     const re = new RegExp("^\\d+$");
     const name = e.target.name;
     const val = parseInt(e.target.value);
 
-    if (e.target.value==='') {
+    if (e.target.value === "") {
       setInput({
         cardWidth: 300,
-    imageHeight:200,
-     
+        imageHeight: 200,
       });
-       setStyleObject({ ...StyleObject, cardWidth: 300, imageHeight: 200 });
-     
+      setStyleObject({ ...StyleObject, cardWidth: 300, imageHeight: 200 });
     }
 
     if (!re.test(val)) {
@@ -30,10 +35,12 @@ function Column() {
         ...Input,
         [name]: val,
       });
-console.log(Input);
+
       setStyleObject({ ...StyleObject, [name]: val });
     }
   };
+
+  // based on the id we're change the input names and value
   return (
     <>
       <article className="column--width">
@@ -46,13 +53,127 @@ console.log(Input);
           onChange={handleChange}
         />
 
-        <label htmlFor="height">ImageHeight</label>
+        <label
+          htmlFor="cardHeight"
+          style={{
+            display:
+              id === "Default-Articles" ||
+              id === "Articles-profile-social-media"
+                ? "none"
+                : "",
+          }}
+        >
+          CardHeight
+        </label>
         <input
           type="text"
-          id="imageHeight"
-          name="imageHeight"
-          defaultValue={Input.imageHeight}
+          id="cardHeight"
+          name="cardHeight"
+          defaultValue={Input.cardHeight}
           onChange={handleChange}
+          style={{
+            display:
+              id === "Default-Articles" ||
+              id === "Articles-profile-social-media"
+                ? "none"
+                : "",
+          }}
+        />
+        <label
+          htmlFor="figureW"
+          style={{
+            display:
+              id === "Default-Articles" ||
+              id === "Articles-profile-social-media"
+                ? "none"
+                : "",
+          }}
+        >
+          ProfileImageWidth
+        </label>
+        <input
+          type="text"
+          id="figureW"
+          name="figureW"
+          defaultValue={Input.figureW}
+          onChange={handleChange}
+          style={{
+            display:
+              id === "Default-Articles" ||
+              id === "Articles-profile-social-media"
+                ? "none"
+                : "",
+          }}
+        />
+
+        <label
+          htmlFor={
+            id === "profile-button" ||
+            id === "profile-Default" ||
+            id === "Testimonial-1" ||
+            id === "Testimonial-2"
+              ? "figureH"
+              : "imageHeight"
+          }
+        >
+          {id === "profile-button" ||
+          id === "profile-Default" ||
+          id === "Testimonial-1" ||
+          id === "Testimonial-2"
+            ? "profileImageHeight"
+            : "imageHeight"}
+        </label>
+        <input
+          type="text"
+          name={
+            id === "profile-button" ||
+            id === "profile-Default" ||
+            id === "Testimonial-1" ||
+            id === "Testimonial-2"
+              ? "figureH"
+              : "imageHeight"
+          }
+          defaultValue={
+            id === "profile-button" ||
+            id === "profile-Default" ||
+            id === "Testimonial-1" ||
+            id === "Testimonial-2"
+              ? Input.figureH
+              : Input.imageHeight
+          }
+          onChange={handleChange}
+        />
+        <label
+          htmlFor={id === "Testimonial-1" ? "positionT" : "positionB"}
+          style={{
+            display:
+              id === "Default-Articles" ||
+              id === "profile-button" ||
+              id === "profile-Default" ||
+              id === "Articles-profile-social-media"
+                ? "none"
+                : "",
+          }}
+        >
+          Image position
+        </label>
+        <input
+          type="text"
+          id={id === "Testimonial-1" ? "positionT" : "positionB"}
+          name={id === "Testimonial-1" ? "positionT" : "positionB"}
+          defaultValue={
+            id === "Testimonial-1" ? Input.positionT : Input.positionB
+          }
+          onChange={handleChange}
+          style={{
+            display:
+              id === "Default-Articles" ||
+              id === "profile-button" ||
+              id === "profile-Default" ||
+              id === "Articles-profile-social-media"
+                ? "none"
+                : "",
+          }}
         />
       </article>
     </>

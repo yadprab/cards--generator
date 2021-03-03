@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { dataContext } from "../conetext";
-function Select() {
+function Select({ id}) {
   const { setStyleObject,StyleObject } = useContext(dataContext);
   const handleChange = (e) => {
   if (e.target.value==='yes') {
@@ -11,13 +11,20 @@ function Select() {
   };
   return (
     <>
-      <article className="title--section">
+      <article
+        className="title--section"
+        style={{
+          display:
+            id === "Default-Articles" || id === "Articles-profile-social-media"
+              ? "flex"
+              : "none",
+        }}
+      >
         <label htmlFor="title">Title</label>
         <select name="title" id="title" onChange={handleChange}>
           <option value="no">no</option>
           <option value="yes">yes</option>
         </select>
-        
       </article>
     </>
   );

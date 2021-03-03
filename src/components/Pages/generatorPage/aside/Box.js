@@ -1,8 +1,12 @@
 import React, { useContext, useState } from "react";
 import { dataContext } from "../conetext";
 function Box() {
+  //box shadow component
+
+  //destructuring object from the context
   const { StyleObject, setStyleObject } = useContext(dataContext);
 
+  //state for controlling input
   const [BoxSdw, setBoxSdw] = useState({
     x: StyleObject.x,
     y: StyleObject.y,
@@ -10,28 +14,22 @@ function Box() {
     spread: StyleObject.spread,
   });
 
+  //handle change function
   const handleChange = (e) => {
-
-
-    
     const name = e.target.name;
 
     let val = e.target.value;
-
-    
-
+    // checking is Nan and converting negative value to positive int
     if (name === "blur") {
-     
       if (isNaN(val)) {
-        return
-      }else{
-         val = Math.abs(val);
+        return;
+      } else {
+        val = Math.abs(val);
       }
     }
-
+    // using dynamic objects we changing state
     setBoxSdw({
       ...BoxSdw,
-
       [name]: val,
     });
     setStyleObject({

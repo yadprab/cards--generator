@@ -2,8 +2,8 @@ main {
     display: grid;
     grid-template-columns: 1fr 400px;
     grid-template-rows: 65px 1fr;
-    background-image: url(../bg/square.png);
-    height: 100%;
+    background-color: #E6E6E6;
+   
 }
 
 aside {
@@ -11,7 +11,9 @@ aside {
     grid-row: 1/3;
     background-color: var(--dark3);
     padding: 0 3em;
-    height: 100%;
+    height: 900px;
+
+
 
     h3{
         font-weight: 400;
@@ -37,4 +39,87 @@ aside {
 
 }
 
+.types--section{
+      padding:1.5em;
+      
+
+    .types{
+        display: grid;
+        grid-template-columns: repeat(3, 250px);
+        place-content: center;
+        place-items:center;
+        gap: 100px;
+        padding: 1.5em;
+
+       
+        article{
+            padding: 1em;
+            border: 1px solid rgba($color: #000, $alpha: 0.2);
+            border-radius: 4px;
+            transition:background 0.4s ease-in;
+             &:hover {
+                 background-color: rgba($color: #fafafa, $alpha: 1);
+             }
+
+             
+
+            
+        }
+
+        figure{
+            @include flex-2;
+            figcaption{
+                text-align: center;
+                margin: 1em 0;
+                color: var(--dark2);
+                text-transform: capitalize;
+                letter-spacing: 0.04em;
+            }
+        }
+    }
+
+}
 @import './aside';
+
+.profile--card--section{
+    display: grid;
+    grid-template-columns: repeat(1, 300px);
+    place-content: center;
+    grid-auto-rows: 300px;
+
+   
+}
+ .profile--card {
+     background-color: #fff;
+     border-radius: 4px;
+     @include flex-2;
+     @include box-special;
+     h3{
+           font-size:  1.25rem;
+         margin: 1em 0 0 0;
+          color: var(--dark);
+     }
+     p{
+          color: var(--dark2);
+     }
+    
+
+     figure{
+         width: 80px;
+         height: 80px;
+
+         img{
+             height: inherit;
+             width: inherit;
+             border-radius: 50%;
+             object-fit: cover;
+         }
+     }
+ }
+
+ #profile--button{
+    background: linear-gradient(283.34deg, #966BE5 0.2%, #5CA2FF 40.42%);
+    font-weight: 500;
+    font-size: 0.85rem;
+    color:#fff ;
+ }

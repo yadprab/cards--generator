@@ -1,10 +1,10 @@
 import React from 'react'
 
-function HeroImg() {
+function HeroImg({src}) {
     return (
       <>
         <video autoPlay loop muted playsInline>
-          <source src="/images/Screen.webm" type="video/webm" />
+          <source src={src} type="video/webm" />
         </video>
       </>
     );
