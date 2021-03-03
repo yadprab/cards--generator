@@ -62,14 +62,14 @@ function Generator() {
       .then((res) => res.json())
       .then((data) => {
         setImage(data);
-        console.log(data);
+       
         setLoading(false);
       })
       .catch((err) => {
         setLoading(false);
         setError(true);
         setImage({});
-        console.log(err);
+     
       });
   };
 
