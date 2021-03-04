@@ -4,7 +4,7 @@ import { dataContext } from "./conetext";
 import ContentEditable from "react-contenteditable";
 import { CardSkeleton } from "../CardSkeleton";
 import { ProfileButton } from "./ProfileButton";
-
+import {SocialMedia} from './SocialMedia';
 function Main({ id }) {
   // destructuring the value from the context
   const { Loading, Image, StyleObject, setStyleObject, setError } = useContext(
@@ -38,7 +38,7 @@ function Main({ id }) {
     },
     h3: {
       fontSize: " 1.25rem",
-      marginTop: 0,
+      margin: "0 0 1.38rem 0",
     },
     image: {
       width: "100%",
@@ -53,11 +53,12 @@ function Main({ id }) {
       padding: "1em",
       borderBottomLeftRadius: "4px",
       borderBottomRightRadius: " 4px",
-      maxWidth: "45ch",
     },
 
     p: {
       fontSize: "1rem",
+      marginBottom: "1em",
+      maxWidth: "45ch",
     },
   };
 
@@ -126,6 +127,8 @@ function Main({ id }) {
                     style={STYLE.p}
                   />
                 </article>
+
+                {id === "Articles-profile-social-media"&&<SocialMedia/>}
               </article>
             </section>
           )}

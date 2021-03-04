@@ -20,7 +20,14 @@ const copyToClipBoard = () => {
   
 }
 const comment = `<!--this is the main container increase the number of cards by multiplying article .card element and 
-increase grid-template column count and remove contenteditable and unnecessary canvas tags -->`;
+increase grid-template column count and remove contenteditable and unnecessary canvas tags --> 
+<style>
+  *{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+  }
+</style> `;
 
 
   return (

@@ -1,15 +1,17 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { dataContext } from "./conetext";
 function ProfileButton({ id }) {
+  //Destructuring the objects from the context
   const { Image, StyleObject, setStyleObject, setError } = useContext(
     dataContext
   );
-
+  //Checking the Image content
   if (Image === undefined || null) {
     setError(true);
   }
   const [{ name, photo, position }] = Image;
 
+  //styles of profile image
   const PROFILE_STYLE = {
     grid: {
       display: " grid",
@@ -29,6 +31,7 @@ function ProfileButton({ id }) {
     },
     h3: {
       fontSize: " 1.25rem",
+      margin: "1em 0 0 0",
     },
     figure: {
       width: `${StyleObject.figureW}px`,
@@ -39,13 +42,17 @@ function ProfileButton({ id }) {
       width: "inherit",
       borderRadius: "50%",
       objectFit: "cover",
+      maxWidth: "100%",
+      display: "block",
     },
     sub: {
       fontSize: "0.8",
+      marginBottom: "1rem",
     },
 
     p: {
       fontSize: "1rem",
+      marginBottom: "1rem",
     },
     button: {
       background: "linear-gradient(283.34deg, #966BE5 0.2%, #5CA2FF 40.42%)",
@@ -59,9 +66,11 @@ function ProfileButton({ id }) {
       letterSpacing: " 0.05em",
       borderRadius: "4px",
       cursor: "pointer",
+      padding: " 0.75em 1em",
       display: `${id === "profile-Default" ? "none" : "inline-block"}`,
     },
   };
+  //styles of Testimonial image
   const Testimonial_STYLE = {
     grid: {
       display: " grid",
@@ -83,6 +92,7 @@ function ProfileButton({ id }) {
     },
     h3: {
       fontSize: " 1.25rem",
+      margin: "1em 0 0 0",
     },
     figure: {
       width: `${StyleObject.figureW}px`,
@@ -96,23 +106,28 @@ function ProfileButton({ id }) {
       width: "inherit",
       borderRadius: "50%",
       objectFit: "cover",
+      maxWidth: "100%",
+      display: "block",
     },
 
     sub: {
       fontSize: "0.8",
+      marginBottom: "1rem",
     },
 
     p: {
       fontSize: "1rem",
       textAlign: "center",
       maxWidth: "45ch",
+      marginBottom: "1rem",
     },
     q: {
       fontWeight: 500,
     },
   };
+  //ref to get HtmlString
   const ref = useRef(null);
-
+  //useEffect to get the HtmlString 
   useEffect(() => {
     if (StyleObject.code) {
       setStyleObject({ ...StyleObject, html: ref.current.outerHTML });
@@ -128,6 +143,7 @@ function ProfileButton({ id }) {
 
   return (
     <>
+      {/* based on id we're rendering the cards */}
       <article
         className="profile--card--section"
         style={
