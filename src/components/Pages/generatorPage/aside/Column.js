@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
+import { emitEvent } from "../../../../Trackers/mixpanel";
 import { dataContext } from "../conetext";
-    // input component to controlling values
+// input component to controlling values
 function Column({ id }) {
   const { StyleObject, setStyleObject } = useContext(dataContext);
   // setting same values to the controlling inputs using useState
@@ -37,7 +38,12 @@ function Column({ id }) {
       });
 
       setStyleObject({ ...StyleObject, [name]: val });
+      emitEvent(`input${name}`, {
+        event: name,
+        attr: { ...Input, [name]: val, page: window.location.pathname },
+      });
     }
+    // emit
   };
 
   // based on the id we're change the input names and value

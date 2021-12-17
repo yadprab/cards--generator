@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { emitEvent } from "../../../../Trackers/mixpanel";
 import { dataContext } from "../conetext";
 function Box() {
   //box shadow component
@@ -35,6 +36,12 @@ function Box() {
     setStyleObject({
       ...StyleObject,
       [name]: val,
+    });
+
+    emitEvent("Box shadow", {
+      ...StyleObject,
+      [name]: val,
+      page: window.location.pathname,
     });
   };
   return (

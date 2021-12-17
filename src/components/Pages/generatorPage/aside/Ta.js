@@ -1,25 +1,24 @@
 import React, { useContext, useRef, useState } from "react";
+import { emitEvent } from "../../../../Trackers/mixpanel";
 import { dataContext } from "../conetext";
-import  {Check} from './Check'
+import { Check } from "./Check";
 function Ta() {
   const { StyleObject, setStyleObject } = useContext(dataContext);
 
-const ref = useRef(null);
+  const ref = useRef(null);
 
-const [Notifications, setNotifications] = useState(false)
+  const [Notifications, setNotifications] = useState(false);
 
-const copyToClipBoard = () => {
+  const copyToClipBoard = (e) => {
+    ref.current.select();
 
-  ref.current.select();
+    document.execCommand("copy");
+    navigator.clipboard.writeText(ref.current.value);
+    setNotifications(true);
 
-  document.execCommand('copy');
-  navigator.clipboard.writeText(ref.current.value);
-  setNotifications(true);
- 
-
-  
-}
-const comment = `<!--this is the main container increase the number of cards by multiplying article .card element and 
+    emitEvent("copyButton", { status: Notifications ? "copied" : "copy" });
+  };
+  const comment = `<!--this is the main container increase the number of cards by multiplying article .card element and 
 increase grid-template column count and remove contenteditable and unnecessary canvas tags --> 
 <style>
   *{
@@ -28,7 +27,6 @@ increase grid-template column count and remove contenteditable and unnecessary c
     box-sizing: border-box;
   }
 </style> `;
-
 
   return (
     <>
@@ -53,7 +51,12 @@ increase grid-template column count and remove contenteditable and unnecessary c
           </code>
           <button
             id="close--button"
-            onClick={() => {
+            onClick={(e) => {
+              const buttonval = e.target.id;
+              emitEvent("close-Get-code-modal", {
+                buttonval,
+                page: window.location.pathname,
+              });
               setStyleObject({ ...StyleObject, code: false });
             }}
           >

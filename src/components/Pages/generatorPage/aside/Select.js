@@ -1,13 +1,18 @@
 import React, { useContext } from "react";
+import { emitEvent } from "../../../../Trackers/mixpanel";
 import { dataContext } from "../conetext";
-function Select({ id}) {
-  const { setStyleObject,StyleObject } = useContext(dataContext);
+function Select({ id }) {
+  const { setStyleObject, StyleObject } = useContext(dataContext);
   const handleChange = (e) => {
-  if (e.target.value==='yes') {
-     setStyleObject({ ...StyleObject, title: true });
-  }else{
-      setStyleObject({...StyleObject ,title: false });
-  }
+    if (e.target.value === "yes") {
+      setStyleObject({ ...StyleObject, title: true });
+    } else {
+      setStyleObject({ ...StyleObject, title: false });
+    }
+    emitEvent("titleSelect", {
+      value: e.target.value,
+      page: window.location.pathname,
+    });
   };
   return (
     <>

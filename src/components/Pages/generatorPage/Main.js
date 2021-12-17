@@ -4,12 +4,12 @@ import { dataContext } from "./conetext";
 import ContentEditable from "react-contenteditable";
 import { CardSkeleton } from "../CardSkeleton";
 import { ProfileButton } from "./ProfileButton";
-import {SocialMedia} from './SocialMedia';
+import { SocialMedia } from "./SocialMedia";
+import { emitEvent } from "../../../Trackers/mixpanel";
 function Main({ id }) {
   // destructuring the value from the context
-  const { Loading, Image, StyleObject, setStyleObject, setError } = useContext(
-    dataContext
-  );
+  const { Loading, Image, StyleObject, setStyleObject, setError } =
+    useContext(dataContext);
 
   //if fetching is failed we set error component true
   if (Image === undefined || null) {
@@ -66,9 +66,11 @@ function Main({ id }) {
   const handleChange = (e) => {
     if (e.target.id === "text") {
       text.current = e.target.value;
+      emitEvent("content Editable text", { page: window.location.pathname });
     }
     if (e.target.id === "para") {
       para.current = e.target.value;
+      emitEvent("content Editable para", { page: window.location.pathname });
     }
   };
 
@@ -128,7 +130,7 @@ function Main({ id }) {
                   />
                 </article>
 
-                {id === "Articles-profile-social-media"&&<SocialMedia/>}
+                {id === "Articles-profile-social-media" && <SocialMedia />}
               </article>
             </section>
           )}
