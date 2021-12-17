@@ -26,7 +26,7 @@ genericEmitter.on("links", (e) => {
 
 export const mixp = {
   init() {
-    mixpanel.init(process.env.REACT_APP_TRACK_KEY);
+    mixpanel.init("107ae269ae6989ec50a33dce7e79a3ad");
   },
 
   track(event, attr) {

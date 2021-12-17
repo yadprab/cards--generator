@@ -8,7 +8,10 @@ import { ScrollToTop } from "./components/ScrollToTop";
 import { useEffect } from "react";
 import { mixp } from "./Trackers/mixpanel";
 function App() {
- 
+  useEffect(() => {
+    mixp.getId();
+   
+  }, []);
   return (
     <>
       {/* routing 
