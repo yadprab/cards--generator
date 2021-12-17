@@ -16,7 +16,7 @@ function HeroText({ content1, content2 }) {
             const id = e.target.id;
             const link = e.target.innerText;
 
-            emitEvent("links", { id, link }, { useMixp: false });
+            emitEvent("get started", { id, link });
           }}
         >
           get started <Svg2 />
